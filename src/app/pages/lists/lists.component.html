@@ -21,7 +21,7 @@
         <div class="title">Task</div>
         <div class="dropdown is-hoverable is-right">
           <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true">
+            <button class="button" [class.is-hidden]=" selected_listid ? false : true " aria-haspopup="true">
               <span><i class="fas fa-cogs"></i></span>
             </button>
           </div>
@@ -89,7 +89,8 @@
           class="button is-primary bottom-icon"
           routerLink="./new-task"
           [disabled]="lists.length == 0"
-        >
+          [class.is-hidden]=" selected_listid ? false : true "
+          >
           <i class="fas fa-plus"></i>
         </button>
       </div>

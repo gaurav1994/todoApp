@@ -11,7 +11,7 @@ var loadFirst  = true ;
   templateUrl: './lists.component.html',
   styleUrls: ['./lists.component.scss']
 })
-export class ListsComponent implements OnInit, AfterViewChecked {
+export class ListsComponent implements OnInit {
 
   constructor(
        private _api : ApiCallsService, 
@@ -20,41 +20,31 @@ export class ListsComponent implements OnInit, AfterViewChecked {
        private _auth : AuthService
        ) { }
   lists : IList[] = [];
-  tasks : ITask[] = [];
+  tasks : ITask[] = null;
   selected_listid : string = "xyz";
   initLoad : boolean;
   ngOnInit(): void {
      this._auth.intitalLoad.subscribe(val=>{
           this.initLoad = val
      }) 
-     this._activatedroute.paramMap.subscribe((params : ParamMap)=>{
-          this._api.getTask(this.selected_listid).subscribe( ( tasks : ITask[] )=>{
-            this.tasks = tasks;
-          })
-          this._api.getlists().subscribe( (result : IList[] ) =>{
-               this.lists = result;
-               if( this.initLoad && this.lists.length> 0){
-                   this._route.navigate(['/lists' , this.lists[0]._id])
-                   this._auth.intitalLoad.next(false)
-               }
-               this.selected_listid = params.get('listid')
-             } )
+     this._api.getlists().subscribe( (result : IList[] ) =>{
+          this.lists = result;
+          if( this.initLoad && this.lists.length> 0){
+              this._route.navigate(['/lists' , this.lists[0]._id])
+              this._auth.intitalLoad.next(false)
           }
+        })
+     this._activatedroute.paramMap.subscribe((params : ParamMap)=>{     
+          this.selected_listid = params.get('listid')
+          this._api.getTask(this.selected_listid).subscribe( ( tasks : ITask[] )=>{
+               this.tasks = tasks;
+          })
+     }
      )
 }
- ngAfterViewChecked(){
-      this._api.getlists().subscribe(val=>{
-           this.lists = val
-      }) 
-      
- }
   deleteSingleList(){ 
     this._api.deleteSingleList(this.selected_listid).subscribe( response  =>{
-         this.lists = [];
-         this._api.getlists().subscribe(lists=>{
-              this.lists = lists
-              this._route.navigate(['/lists' , this.lists[0]._id])
-         })
+          this._route.navigate(['/lists' ])
     },error=>{ console.log(error)})
   }
   deleteSingleTask(taskid){
