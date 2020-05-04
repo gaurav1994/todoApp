@@ -22,7 +22,6 @@ export class CreatelistComponent implements OnInit, AfterViewInit {
   addNewList(listInput){
     let list = { title : listInput };
    this._api.addNewList(list).subscribe( (result : IList)=>{
-    console.log(result);
     this._route.navigate(['/lists', result._id])
    }, error =>{
      console.log(error)
