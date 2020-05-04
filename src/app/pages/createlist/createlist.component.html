@@ -1,0 +1,14 @@
+<div class="centered-content">
+     <div class="modal-box">
+          <div class="title">Create New List</div>
+          <div class="field">
+               <div class="control">
+                    <input class="input  has-background-light" type="text" placeholder="Type List" #listInput>
+              </div>
+          </div>
+          <div class="buttons is-right">
+               <button class="button is-danger is-inverted is-rounded" [routerLink]="[ '../' ]">Cancel</button>
+               <button class="button is-primary has-text-white is-rounded" (click)="addNewList(listInput.value)">Save</button>
+          </div>
+     </div>
+</div>

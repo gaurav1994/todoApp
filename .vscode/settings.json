@@ -1,0 +1,9 @@
+{    
+     "prettier.tabWidth": 4,
+     "prettier.useTabs": true,
+     "editor.detectIndentation": false,
+     "editor.foldingStrategy": "indentation",
+     "editor.smoothScrolling": true,
+     "editor.semanticHighlighting.enabled": false,
+     
+}

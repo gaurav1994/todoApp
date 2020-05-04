@@ -1,0 +1,135 @@
+@import '../../../style-main.scss';
+
+.task-manager-container{
+     display: flex;
+     flex-direction: row;
+     background-color: rgb(255, 255, 255);
+     max-width: 850px;
+     width: 850px;
+     height: 500px;
+     max-height: 500px;
+     border-radius: 10px !important;
+}
+.sidebar{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 220px;
+     height: 100%;
+     background-color: $light;
+     border-top-left-radius: 10px;
+     border-bottom-left-radius: 10px;
+     padding-top: 20px;
+     .link{
+          display:  flex;
+          flex-direction: column;
+          height: 100%;
+          width: 180px;
+          margin-top: 20px;
+          a{
+               display: block;
+               margin-bottom: 10px;
+               padding: 6px;
+               height: auto;
+               border-radius: 10px;
+          }
+     }
+}
+
+.new-list{
+     display: flax;
+     margin-top :15px ;
+     margin-bottom: 30px;
+}
+.new-list .button {
+     width: 180px;
+     color: white;
+}
+.task-list-container{
+     position: relative;
+     display: flex;;
+     flex-direction: column;
+     background-color: transparent;
+     width: 630px;
+     height: 100%;
+     padding-top: 20px;
+     padding-left: 40px;
+     padding-right: 40px;
+}
+.task-container{
+     
+}
+.task{
+     display: flex;
+     align-items: center;
+     background-color: rgb(243, 243, 243);
+     padding: 10px;
+     margin-bottom: 8px;
+     height: auto;
+     box-shadow: 0 0 2px 1px #e6e6e6;
+     color: #6e6e6e;
+     .custom-buttons{
+          opacity: 0;
+          transition: opacity 0.4s ease , transform 0.4s ease;
+          transform: scale(0.50);
+     }
+     &:not(.completed){
+          cursor: pointer;
+          transition : box-shadow 0.2s ease, transform 0.2s ease;
+          &:hover{
+               box-shadow: 0 0 4px 1px #c8c8c8;
+               .custom-buttons { 
+                    opacity: 1;
+                    transform: scale(1);
+               }
+          }
+          &:active{
+               transform: scale(0.97);
+          }
+     }
+     &.completed {
+          text-decoration: line-through;
+          opacity: 0.6;
+          .custom-buttons{
+               display: none;
+          }
+     }
+     .task-text{
+          flex-grow: 1;
+     }
+}
+.active {
+     background-color: rgb(165, 241, 216);
+     color: rgb(55, 139, 125);
+}
+.task-footer{
+     
+}
+// fonts
+.fa-plus{
+     font-size : 22px;
+     font-weight: 600;
+     color: white;
+     transform: scale(1.5);
+}
+.bottom-icon{
+     position: absolute;
+     bottom: 20px;
+     right: 20px;
+     width: 50px;
+     height: 50px;
+     border-radius: 100%;
+}
+.task-menu{
+     display: flex;
+     flex-direction: row;
+     margin-bottom: 20px;
+}
+.dropdown-menu{
+     margin-bottom: 0px;
+}
+.disabled-link{
+     outline: none;
+     border: none;
+     border-radius: 0px;
+}

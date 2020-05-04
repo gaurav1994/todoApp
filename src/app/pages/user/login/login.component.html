@@ -1,0 +1,58 @@
+<div class="notification is-danger is-light font-smaller" *ngIf="serverError.isErrorMessage">
+  <button class="delete" (click)="serverError.isErrorMessage = false"></button>
+  {{ serverError.errorMessage}}
+</div>
+
+<div class="centered-content">
+  <div class="modal-box">
+    <form (ngSubmit)="loginData()">
+      <div class="title column has-text-centered is-size-3">Login</div>
+      <div class="field column">
+        <p class="control has-icons-left has-icons-right">
+          <input
+            class="input has-background-light"
+            type="text"
+            placeholder="Username"
+            name="uname"
+            [(ngModel)]="user.uname"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+          <!-- <span class="icon is-small is-right">
+                   <i class="fas fa-check"></i>
+                 </span> -->
+        </p>
+      </div>
+      <div class="field column">
+        <p class="control has-icons-left">
+          <input
+            class="input has-background-light"
+            type="password"
+            placeholder="Password"
+            name="upass"
+            [(ngModel)]="user.upass"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field column">
+        <p class="control">
+          <button class="button is-success has-text-white is-fullwidth">
+            Login
+          </button>
+        </p>
+      </div>
+      <div class="field column has-text-centered">
+        <p>Not registered? <a routerLink="/signup">Create an account</a></p>
+      </div>
+
+      <!-- <div class="buttons is-right">
+               <button class="button is-danger is-inverted is-rounded" [routerLink]="[ '../' ]">Cancel</button>
+               <button class="button is-primary has-text-white is-rounded">Save</button>
+          </div> -->
+    </form>
+  </div>
+</div>

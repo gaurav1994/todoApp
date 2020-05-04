@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "todoApp": {
@@ -98,6 +98,7 @@
           }
         },
         "lint": {
+          "type": "module",
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "todoApp"
+    }
+  },
+  "defaultProject": "todoApp",
+  "cli": {
+    "analytics": "a2b67576-193f-42ed-8546-c2bd044dc5eb"
+  }
 }
