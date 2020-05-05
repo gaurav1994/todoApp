@@ -15,17 +15,20 @@
      flex-direction: column;
      align-items: center;
      width: 220px;
-     height: 100%;
+     height: 500px;
+     // overflow-y: hidden;
      background-color: $light;
      border-top-left-radius: 10px;
      border-bottom-left-radius: 10px;
      padding-top: 20px;
      .link{
+          margin: 20px 0px 0px 20px;
+          padding-right: 20px;
           display:  flex;
           flex-direction: column;
           height: 100%;
-          width: 180px;
-          margin-top: 20px;
+          overflow-y: auto;
+          width: 200px;
           a{
                display: block;
                margin-bottom: 10px;
@@ -57,7 +60,10 @@
      padding-right: 40px;
 }
 .task-container{
-     
+     overflow-y: auto;
+     height: 340px;
+     padding: 0 20px 0 0;
+     width: 570px;
 }
 .task{
      display: flex;
@@ -103,7 +109,14 @@
      color: rgb(55, 139, 125);
 }
 .task-footer{
-     
+     display: flex;
+     flex-direction: row-reverse;
+     bottom: 10px;
+     position: absolute;
+     // background-color:  greenyellow;
+     height: 60px;
+     width : 560px;
+     margin: 0 0 0px 0;
 }
 // fonts
 .fa-plus{
@@ -113,9 +126,9 @@
      transform: scale(1.5);
 }
 .bottom-icon{
-     position: absolute;
-     bottom: 20px;
-     right: 20px;
+     // position: absolute;
+     // bottom: 20px;
+     // right: 20px;
      width: 50px;
      height: 50px;
      border-radius: 100%;
