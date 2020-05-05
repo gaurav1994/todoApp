@@ -29,6 +29,7 @@
           height: 100%;
           overflow-y: auto;
           width: 200px;
+          
           a{
                display: block;
                margin-bottom: 10px;
@@ -62,8 +63,20 @@
 .task-container{
      overflow-y: auto;
      height: 340px;
-     padding: 0 20px 0 0;
+     padding: 5px 20px 5px 5px;
      width: 570px;
+     .unseleceted-text{
+          // background-color: hotpink;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+          p{
+               font-size: large;
+          }
+     }
 }
 .task{
      display: flex;
@@ -117,22 +130,19 @@
      height: 60px;
      width : 560px;
      margin: 0 0 0px 0;
+     .fa-plus{
+          font-size : 22px;
+          font-weight: 600;
+          color: white;
+          transform: scale(1.5);
+     }
+     .bottom-icon{
+          width: 50px;
+          height: 50px;
+          border-radius: 100%;
+     }
 }
 // fonts
-.fa-plus{
-     font-size : 22px;
-     font-weight: 600;
-     color: white;
-     transform: scale(1.5);
-}
-.bottom-icon{
-     // position: absolute;
-     // bottom: 20px;
-     // right: 20px;
-     width: 50px;
-     height: 50px;
-     border-radius: 100%;
-}
 .task-menu{
      display: flex;
      flex-direction: row;

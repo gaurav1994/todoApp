@@ -38,7 +38,8 @@ html, body {
     height: 100%;
 }
 a:hover{
-    color: rgb(17, 167, 129) !important;
+     transition: color 0.5s ease;
+    color: rgb(49, 182, 149) !important;
 }
 
 .centered-content {
