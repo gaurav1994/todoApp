@@ -1,9 +1,9 @@
+import { ToastrService } from 'ngx-toastr';
 import { IResponsePayload } from './../models/responsePayload';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, BehaviorSubject }from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { IuserFetched } from '../models/userFetched';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import { IuserFetched } from '../models/userFetched';
 export class AuthService {
 
      readonly baseurl = "http://localhost:3000/";
-     constructor(private _http : HttpClient) { }
+     constructor(private _http : HttpClient, private _toastr : ToastrService) { }
      intitalLoad = new BehaviorSubject(true);
 
      userSignup(payload){
@@ -56,14 +56,17 @@ export class AuthService {
      }
 
      private errorEmit(error : HttpErrorResponse){
-          if(error instanceof HttpErrorResponse ){
-               console.log("server side error accured : ")
-               // console.log(error)
+          let errorText ;
+          if(error.error instanceof ErrorEvent ){
+               // client  side error accurred
+               console.log("client side error accured : " + error.error.message)
+               errorText = error.error.message;
           }else{
-               console.log("client side error accured  : " )
+               // server side error accurred
+               console.log("server side error accured  : " + error.error )
+               errorText = error.error.message
                // console.log(error)
           }
-          let errorText = error.error.message
           return throwError(errorText)
      }
 }

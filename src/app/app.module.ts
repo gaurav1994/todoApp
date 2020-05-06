@@ -16,6 +16,8 @@ import { SignupComponent } from './pages/user/signup/signup.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { AuthService } from './service/auth.service';
 import { InterceptService } from './service/intercept.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,14 @@ import { InterceptService } from './service/intercept.service';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+          timeOut  : 3000,
+          closeButton : true,
+          progressBar : true,
+          progressAnimation : 'increasing'
+    })
   ],
   providers: [ApiCallsService, AuthService, { provide : HTTP_INTERCEPTORS , useClass : InterceptService , multi : true}],
   bootstrap: [AppComponent]

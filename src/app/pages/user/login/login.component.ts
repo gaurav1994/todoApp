@@ -1,10 +1,10 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/models/user';
 import { ApiCallsService } from 'src/app/service/api-calls.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/service/auth.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,14 +12,10 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _auth : AuthService, private _router : Router) { }
+  constructor(private _auth : AuthService, private _router : Router, private _toastr : ToastrService) { }
   user : IUser = {
        uname : "",
        upass : ""
-  }
-  serverError = {
-     isErrorMessage : false ,
-     errorMessage : ""
   }
 
   ngOnInit(): void {
@@ -31,8 +27,10 @@ export class LoginComponent implements OnInit {
      }
      this._auth.userLogin(payload).subscribe(res=>{
           this._router.navigate(['/lists'])
-     },error=>{
-          console.log(error)
+     },err=>{
+          this._toastr.error(err, 'Unauthorised' )
+     },()=>{
+          this._toastr.success("Login Successfully")
      })
   }
 

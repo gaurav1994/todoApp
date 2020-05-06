@@ -5,7 +5,6 @@ import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { ITask } from "src/app/models/task";
 import { AuthService } from "src/app/service/auth.service";
 
-var loadFirst = true;
 @Component({
   selector: "app-lists",
   templateUrl: "./lists.component.html",

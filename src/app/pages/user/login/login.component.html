@@ -1,8 +1,3 @@
-<div class="notification is-danger is-light font-smaller" *ngIf="serverError.isErrorMessage">
-  <button class="delete" (click)="serverError.isErrorMessage = false"></button>
-  {{ serverError.errorMessage}}
-</div>
-
 <div class="centered-content">
   <div class="modal-box">
     <form (ngSubmit)="loginData()">
