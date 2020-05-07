@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { IUser } from "src/app/models/user";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from 'src/app/service/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: "app-signup",
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
     upass: "",
   };
   ngOnInit(): void {}
-  signupData() {
+  signupData(formSignupData: NgForm) {
     let userPayload = {
       username: this.user.uname,
       email: this.user.uemail,
@@ -31,7 +32,9 @@ export class SignupComponent implements OnInit {
       (response: IUser) => {	
         console.log(response)
       },
-      (error) => console.log(error),
+      (error) =>{ 
+           console.log(error) 
+          formSignupData.resetForm() },
       () =>
         this._router.navigate(["../login"], {
           relativeTo: this._activatedroute,

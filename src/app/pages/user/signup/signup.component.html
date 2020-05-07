@@ -1,65 +1,53 @@
 <div class="centered-content">
-  <div class="modal-box">
-    <form #formSignupData="ngForm" (ngSubmit)="signupData()">
-      <div class="title column has-text-centered is-size-3">Signup</div>
-      <div class="field column">
-        <p class="control has-icons-left has-icons-right">
-          <input
-            class="input has-background-light"
-            type="text"
-            placeholder="Username"
-            [(ngModel)]="user.uname"
-            name="uname"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-          </span>
-        </p>
-      </div>
-      <div class="field column">
-        <p class="control has-icons-left has-icons-right">
-          <input
-            class="input has-background-light"
-            type="email"
-            placeholder="Email"
-            [(ngModel)]="user.uemail"
-            name="uemail"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <!-- <span class="icon is-small is-right">
+     <div class="modal-box">
+          <form #formSignupData="ngForm" (ngSubmit)="signupData(formSignupData)">
+               <div class="title column has-text-centered is-size-3">Signup</div>
+               <div class="field column">
+                    <p class="control has-icons-left has-icons-right">
+                         <input class="input has-background-light" type="text" #uname="ngModel"
+                              [class.is-danger]="uname.invalid && uname.touched" required placeholder="Username"
+                              [(ngModel)]="user.uname" name="uname" />
+                         <span class="icon is-small is-left">
+                              <i class="fas fa-user"></i>
+                         </span>
+                    </p>
+               </div>
+               <div class="field column">
+                    <p class="control has-icons-left has-icons-right">
+                         <input class="input has-background-light" type="email" #uemail="ngModel"
+                              [class.is-danger]="uemail.invalid && uemail.touched" required placeholder="Email"
+                              [(ngModel)]="user.uemail" name="uemail" />
+                         <span class="icon is-small is-left">
+                              <i class="fas fa-envelope"></i>
+                         </span>
+                         <!-- <span class="icon is-small is-right">
                    <i class="fas fa-check"></i>
                  </span> -->
-        </p>
-      </div>
+                    </p>
+               </div>
 
-      <div class="field column">
-        <p class="control has-icons-left">
-          <input
-            class="input has-background-light"
-            type="password"
-            placeholder="Password"
-            [(ngModel)]="user.upass"
-            name="upass"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-          </span>
-        </p>
-      </div>
-      <div class="field column">
-        <p class="control">
-          <button class="button is-success has-text-white is-fullwidth">
-            Signup
-          </button>
-        </p>
-      </div>
-      <div class="field column has-text-centered">
-        <p>
-          Already have registered? <a routerLink="/login">Click to login</a>
-        </p>
-      </div>
-    </form>
-  </div>
+               <div class="field column">
+                    <p class="control has-icons-left">
+                         <input class="input has-background-light" type="password" #upass="ngModel"
+                              [class.is-danger]="upass.invalid && upass.touched" required placeholder="Password"
+                              [(ngModel)]="user.upass" name="upass" />
+                         <span class="icon is-small is-left">
+                              <i class="fas fa-lock"></i>
+                         </span>
+                    </p>
+               </div>
+               <div class="field column">
+                    <p class="control">
+                         <button class="button is-success has-text-white is-fullwidth" [disabled]="formSignupData.invalid">
+                              Signup
+                         </button>
+                    </p>
+               </div>
+               <div class="field column has-text-centered">
+                    <p>
+                         Already have registered? <a routerLink="/login">Click to login</a>
+                    </p>
+               </div>
+          </form>
+     </div>
 </div>

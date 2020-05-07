@@ -1,15 +1,18 @@
 <div class="centered-content">
   <div class="modal-box">
-    <form (ngSubmit)="loginData()">
+    <form #loginForm="ngForm" (ngSubmit)="loginData(loginForm)">
       <div class="title column has-text-centered is-size-3">Login</div>
       <div class="field column">
         <p class="control has-icons-left has-icons-right">
           <input
             class="input has-background-light"
+            #uname = "ngModel"
+            [class.is-danger]="uname.invalid && uname.touched"
             type="text"
             placeholder="Username"
             name="uname"
             [(ngModel)]="user.uname"
+            required
           />
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
@@ -23,10 +26,13 @@
         <p class="control has-icons-left">
           <input
             class="input has-background-light"
+            #upass="ngModel"
+            [class.is-danger]="upass.invalid && upass.touched"
             type="password"
             placeholder="Password"
             name="upass"
             [(ngModel)]="user.upass"
+            required
           />
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
@@ -35,7 +41,7 @@
       </div>
       <div class="field column">
         <p class="control">
-          <button class="button is-success has-text-white is-fullwidth">
+          <button class="button is-success has-text-white is-fullwidth" [disabled]="loginForm.invalid" >
             Login
           </button>
         </p>

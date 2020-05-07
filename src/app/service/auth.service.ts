@@ -22,7 +22,7 @@ export class AuthService {
           .pipe(
                map( (response_payload : IResponsePayload) =>{
                     if(response_payload){
-                         console.log(response_payload)
+                         // console.log(response_payload)
                          let token = response_payload.token
                          // let user : IuserFetched = {
                          //      username : response_payload.user.username,

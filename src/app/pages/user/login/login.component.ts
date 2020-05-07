@@ -5,6 +5,7 @@ import { ApiCallsService } from 'src/app/service/api-calls.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/service/auth.service';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  loginData(){
+  loginData(loginData : NgForm){
      var payload = {
           username : this.user.uname,
           password : this.user.upass
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['/lists'])
      },err=>{
           this._toastr.error(err, 'Unauthorised' )
+          loginData.resetForm()
      },()=>{
           this._toastr.success("Login Successfully")
      })

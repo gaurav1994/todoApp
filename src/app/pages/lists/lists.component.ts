@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { IList } from "./../../models/list";
 import { Component, OnInit } from "@angular/core";
 import { ApiCallsService } from "src/app/service/api-calls.service";
@@ -15,10 +16,11 @@ export class ListsComponent implements OnInit {
     private _api: ApiCallsService,
     private _activatedroute: ActivatedRoute,
     private _route: Router,
-    private _auth: AuthService
+    private _auth: AuthService,
+    private _toastr : ToastrService
   ) {}
-  lists: IList[] ;
-  tasks: ITask[] ;
+  lists: IList[];
+  tasks: ITask[];
   selected_listid: string = "xyz";
   initLoad: boolean;
   ngOnInit(): void {
@@ -40,23 +42,28 @@ export class ListsComponent implements OnInit {
     });
   }
   deleteSingleList() {
-    this._api.deleteSingleList(this.selected_listid).subscribe(
-      (response) => {
-        this._route.navigate(["/lists"]);
+    this._api.deleteSingleList(this.selected_listid).subscribe((response) => {
+        
       },
       (error) => {
         console.log(error);
+        this._toastr.error(error, "Error")
+      },()=>{
+        this._route.navigate(["/lists"]);
+        this._toastr.warning("List Removed Successfully", "Status Code 200")
       }
     );
   }
   deleteSingleTask(taskid) {
-    this._api.deleteSingleTask(taskid).subscribe(
-      (response) => {
+    this._api.deleteSingleTask(taskid).subscribe((response) => {
         this.tasks = this.tasks.filter(
           (singletask) => singletask._id != taskid
         );
       },
-      (error) => console.log(error)
+      (error) => console.log(error),
+      ()=>{
+          this._toastr.warning("Task Deleted Successfully" , "Task Deleted")
+      }
     );
   }
   taskCompleteOps(task: ITask) {
