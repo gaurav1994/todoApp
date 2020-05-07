@@ -29,13 +29,13 @@
           height: 100%;
           overflow-y: auto;
           width: 200px;
-          
           a{
                display: block;
                margin-bottom: 10px;
                padding: 6px;
                height: auto;
                border-radius: 10px;
+               color : $orange;
           }
      }
 }
@@ -118,7 +118,7 @@
      }
 }
 .active {
-     background-color: rgb(165, 241, 216);
+     background-color: $orange-light;
      color: rgb(55, 139, 125);
 }
 .task-footer{

@@ -3,8 +3,9 @@
 // Import Fonts (Lato and Nunito)
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
 
-$turquoise: #44ddd0;
-$green: #27d7a1;
+$turquoise: #ecb975;
+$orange: #dd8944;
+$orange-light : #ffc494;
 $light-green: #45f69e; 
 $dark-green: rgb(0, 100, 80);
 
@@ -13,9 +14,9 @@ $light: #f8f8f8;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
-$primary: $green;
+$primary: $orange;
 
-$link: #44ddd0;
+$link: $orange;
 
 
 // Update some of Bulma's component variables
@@ -24,14 +25,14 @@ $button-border-width: 1px;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
-$input-focus-border-color : #30dda9;
-$link-focus-border : #30dda9;
+$input-focus-border-color : $orange;
+$link-focus-border : $orange;
 
 
 // Set custom global styles (will be applied to whole app)
 
 html {
-    background: linear-gradient(to right top, $turquoise, $green);
+    background: linear-gradient(to left bottom, $turquoise, $primary);
 }
 
 html, body {
@@ -39,7 +40,7 @@ html, body {
 }
 a:hover{
      transition: color 0.5s ease;
-    color: rgb(49, 182, 149) !important;
+    color: rgb(202, 130, 62) !important;
 }
 
 .centered-content {
@@ -65,7 +66,7 @@ a:hover{
     font-size: 24px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: $green; 
+    color: $primary; 
     flex-grow: 1;
     margin-bottom: 0px;
 }
@@ -83,10 +84,10 @@ a:hover{
      width: 10px; 
 }
 ::-webkit-scrollbar-thumb{
-     background-color: rgba($color: $green, $alpha: 0.5);
+     background-color: rgba($color: $primary, $alpha: 0.5);
      border-radius: 10px;
      visibility: visible;
      &:hover{
-          background-color: rgba($color: $green, $alpha: 0.7);
+          background-color: rgba($color: $primary, $alpha: 0.7);
      }
 }
