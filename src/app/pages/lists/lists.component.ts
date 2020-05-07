@@ -17,8 +17,8 @@ export class ListsComponent implements OnInit {
     private _route: Router,
     private _auth: AuthService
   ) {}
-  lists: IList[] = null;
-  tasks: ITask[] = null;
+  lists: IList[] ;
+  tasks: ITask[] ;
   selected_listid: string = "xyz";
   initLoad: boolean;
   ngOnInit(): void {

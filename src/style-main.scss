@@ -78,3 +78,15 @@ a:hover{
     max-width: 350px;
     
 }
+::-webkit-scrollbar{
+     background-color: transparent;
+     width: 10px; 
+}
+::-webkit-scrollbar-thumb{
+     background-color: rgba($color: $green, $alpha: 0.5);
+     border-radius: 10px;
+     visibility: visible;
+     &:hover{
+          background-color: rgba($color: $green, $alpha: 0.7);
+     }
+}
