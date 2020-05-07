@@ -15,14 +15,13 @@ export class AuthService {
      intitalLoad = new BehaviorSubject(true);
 
      userSignup(payload){
-          return this._http.post(`${this.baseurl}users/signup`, payload)
+          return this._http.post(`${this.baseurl}users/signup`, payload , { observe : 'response'})
      }
      userLogin(payload){
           return this._http.post(`${this.baseurl}users/login`, payload, { observe : 'body' })
           .pipe(
                map( (response_payload : IResponsePayload) =>{
                     if(response_payload){
-                         // console.log(response_payload)
                          let token = response_payload.token
                          // let user : IuserFetched = {
                          //      username : response_payload.user.username,
