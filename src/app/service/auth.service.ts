@@ -39,6 +39,9 @@ export class AuthService {
                catchError(this.errorEmit)
           );
      }
+     userUpdate(payload){
+          return this._http.patch(`${this.baseurl}users/update`, payload)
+     }
      public userLogout(){
           this.clearLocalStorage()
      }

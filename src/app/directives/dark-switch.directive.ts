@@ -1,5 +1,5 @@
 import { AuthService } from 'src/app/service/auth.service';
-import { Directive, Input, HostBinding , HostListener, Renderer2, OnInit, ElementRef} from '@angular/core';
+import { Directive , HostListener, Renderer2, OnInit, ElementRef} from '@angular/core';
 
 @Directive({
   selector: '[appDarkSwitch]'
@@ -17,10 +17,13 @@ export class DarkSwitchDirective implements OnInit{
           this.setTheme(this.themevalue)
   }
   @HostListener('change') onChange(){
-     if(this.themevalue == 'light')
-          this.setTheme('dark')
-     else
-          this.setTheme('light')
+     if(this.themevalue == 'light') this.setTheme('dark')
+     else this.setTheme('light')
+     let payload = {
+          theme : localStorage.getItem('theme')
+     }
+     this._auth.userUpdate(payload).subscribe(value=>{ 
+     })
   }
   setTheme(themeValue : string){
      if(themeValue == 'light'){
@@ -41,5 +44,4 @@ export class DarkSwitchDirective implements OnInit{
      this._render.removeAttribute(this.el.nativeElement, 'checked')
      this.themevalue = 'light'
   }
-
 }
