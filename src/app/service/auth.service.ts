@@ -13,19 +13,18 @@ export class AuthService {
      readonly baseurl = "http://localhost:3000/";
      constructor(private _http : HttpClient, private _toastr : ToastrService) { }
      intitalLoad = new BehaviorSubject(true);
-     theme ;
 
      userSignup(payload){
           return this._http.post(`${this.baseurl}users/signup`, payload , { observe : 'response'})
      }
+     
      userLogin(payload){
           return this._http.post(`${this.baseurl}users/login`, payload, { observe : 'body' })
           .pipe(
                map( (response_payload : IResponsePayload) =>{
                     if(response_payload){
                          console.log(response_payload)
-                         this.theme = response_payload.theme
-                         console.log(response_payload.theme)
+                         localStorage.setItem('theme', response_payload.theme)
                          let token = response_payload.token
                          // let user : IuserFetched = {
                          //      username : response_payload.user.username,

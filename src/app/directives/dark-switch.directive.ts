@@ -10,11 +10,12 @@ export class DarkSwitchDirective implements OnInit{
 
   themevalue : string;
   ngOnInit(){
-     this.themevalue = this._auth.theme
-     this.setTheme(this.themevalue)
+     this.themevalue = localStorage.getItem('theme');
+     if(this.themevalue == 'light')
+          this.setTheme(this.themevalue)
+     else
+          this.setTheme(this.themevalue)
   }
-
-//   @HostBinding('attr.checked') isCheckedDarkTheme = true ;
   @HostListener('change') onChange(){
      if(this.themevalue == 'light')
           this.setTheme('dark')
@@ -23,18 +24,20 @@ export class DarkSwitchDirective implements OnInit{
   }
   setTheme(themeValue : string){
      if(themeValue == 'light'){
-          this.setLightTheme()
+          this.setLightTheme('light')
      }else{
-          this.setBlackTheme()
+          this.setBlackTheme('dark')
      }
   }
-  setBlackTheme(){
-     this._render.setAttribute(document.body, 'data-theme', 'dark')
+  setBlackTheme(value){
+     localStorage.setItem('theme', value)
+     this._render.setAttribute(document.body, 'data-theme', value)
      this._render.setAttribute(this.el.nativeElement, 'checked' , 'checked')
-     this.themevalue = 'dark'
+     this.themevalue = 'dark' 
   }
-  setLightTheme(){
-     this._render.setAttribute(document.body, 'data-theme', 'light')
+  setLightTheme(value){
+     localStorage.setItem('theme', value)
+     this._render.setAttribute(document.body, 'data-theme', value)
      this._render.removeAttribute(this.el.nativeElement, 'checked')
      this.themevalue = 'light'
   }
