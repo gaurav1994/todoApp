@@ -8,29 +8,35 @@ export class DarkSwitchDirective implements OnInit{
 
   constructor(private _render : Renderer2, private _auth : AuthService, private el : ElementRef) { }
 
+  themevalue : string;
   ngOnInit(){
-     let themevalue = this._auth.theme
-     this.theme = themevalue
-     this._render.setAttribute(document.body, 'data-theme', this.theme)
-     if(this.theme == 'light'){
-          this._render.setAttribute(this.el.nativeElement, 'checked', "false")
-          this._render.removeAttribute(this.el.nativeElement, 'checked')
+     this.themevalue = this._auth.theme
+     this.setTheme(this.themevalue)
+  }
+
+//   @HostBinding('attr.checked') isCheckedDarkTheme = true ;
+  @HostListener('change') onChange(){
+     if(this.themevalue == 'light')
+          this.setTheme('dark')
+     else
+          this.setTheme('light')
+  }
+  setTheme(themeValue : string){
+     if(themeValue == 'light'){
+          this.setLightTheme()
      }else{
-          this._render.setAttribute(this.el.nativeElement, 'checked', "true")
-          this._render.setAttribute(this.el.nativeElement, 'checked' , 'checked')
+          this.setBlackTheme()
      }
   }
-  @HostBinding('attr.data-theme') theme ;
-  @HostListener('change') onChange(){
-       if(this.theme=='light'){
-          this.theme = 'dark'
-          this._render.setAttribute(document.body, 'data-theme', 'dark')
-          this._render.setAttribute(this.el.nativeElement, 'checked' , 'checked')
-       }else{
-            this.theme = 'light'
-          this._render.setAttribute(document.body, 'data-theme', 'light')
-          this._render.removeAttribute(this.el.nativeElement, 'checked')
-       }
+  setBlackTheme(){
+     this._render.setAttribute(document.body, 'data-theme', 'dark')
+     this._render.setAttribute(this.el.nativeElement, 'checked' , 'checked')
+     this.themevalue = 'dark'
+  }
+  setLightTheme(){
+     this._render.setAttribute(document.body, 'data-theme', 'light')
+     this._render.removeAttribute(this.el.nativeElement, 'checked')
+     this.themevalue = 'light'
   }
 
 }

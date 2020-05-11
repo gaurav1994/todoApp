@@ -28,7 +28,6 @@
                                         routerLinkActive="active" [disabled]="lists.length == 0">
                                         Edit
                                    </button>
-
                                    <button class="dropdown-item button has-text-danger disabled-link"
                                         (click)="deleteSingleList()" [disabled]="lists.length == 0 && selected_listid">
                                         Delete
@@ -86,19 +85,20 @@
                </div>
                <div class="task-footer" *ngIf="lists">
                     <div class="fields">
-                         <label class="switch">
-                              <input type="checkbox" checked>
-                              <span class="slider round"></span>
-                            </label>
+                         <button class="dropdown-item button disabled-link"
+                                   (click)="settings=true" [disabled]="lists.length == 0 && selected_listid">
+                                   <span><i class="fas fa-cogs"></i> &nbsp; Settings</span>
+                              </button>
                          <button class="button is-primary bottom-icon" routerLink="./new-task" [disabled]="lists.length == 0"
                               [class.is-hidden]="selected_listid ? false : true">
                               <i class="fas fa-plus"></i>
                          </button>
                     </div>
                </div>
-               <div class="settings">
-                    <button class="button is-small settings-close" >
-                         <i class="fas fa-close"></i>
+               <div class="settings" [hidden]="!settings" >
+                    <button class="button is-small settings-close" 
+                         (click)="settings=false">
+                         <i class="far fa-times-circle"></i>
                     </button>
                     <div class="list is-hoverable">
                          <div class="list-item">Dark Theme : 

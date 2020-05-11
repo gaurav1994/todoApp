@@ -19,6 +19,7 @@ export class ListsComponent implements OnInit, AfterViewInit {
     private _auth: AuthService,
     private _toastr : ToastrService
   ) {}
+  settings : boolean = false;
   lists: IList[];
   tasks: ITask[];
   selected_listid: string = "xyz";
