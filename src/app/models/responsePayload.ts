@@ -5,5 +5,6 @@ export interface IResponsePayload {
           email : string,
           username : string,
           _id : string
-     }
+     },
+     theme : string
 }

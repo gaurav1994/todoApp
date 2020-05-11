@@ -1,3 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./style-main.scss";
+// @import "./dark-theme-variables.scss";
 @import "../node_modules/bulma/bulma.sass";
+@import '../node_modules/bulma-switch/src/sass/index.sass';

@@ -2,7 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IResponsePayload } from './../models/responsePayload';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, BehaviorSubject }from 'rxjs';
+import { throwError, BehaviorSubject, Subject, Observable }from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class AuthService {
      readonly baseurl = "http://localhost:3000/";
      constructor(private _http : HttpClient, private _toastr : ToastrService) { }
      intitalLoad = new BehaviorSubject(true);
+     theme ;
 
      userSignup(payload){
           return this._http.post(`${this.baseurl}users/signup`, payload , { observe : 'response'})
@@ -22,6 +23,9 @@ export class AuthService {
           .pipe(
                map( (response_payload : IResponsePayload) =>{
                     if(response_payload){
+                         console.log(response_payload)
+                         this.theme = response_payload.theme
+                         console.log(response_payload.theme)
                          let token = response_payload.token
                          // let user : IuserFetched = {
                          //      username : response_payload.user.username,

@@ -18,6 +18,7 @@ import { AuthService } from './service/auth.service';
 import { InterceptService } from './service/intercept.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { DarkSwitchDirective } from './directives/dark-switch.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
     EditlistComponent,
     EdittaskComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    DarkSwitchDirective
   ],
   imports: [
     BrowserModule,

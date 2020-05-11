@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { IList } from "./../../models/list";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { ApiCallsService } from "src/app/service/api-calls.service";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { ITask } from "src/app/models/task";
@@ -11,7 +11,7 @@ import { AuthService } from "src/app/service/auth.service";
   templateUrl: "./lists.component.html",
   styleUrls: ["./lists.component.scss"],
 })
-export class ListsComponent implements OnInit {
+export class ListsComponent implements OnInit, AfterViewInit {
   constructor(
     private _api: ApiCallsService,
     private _activatedroute: ActivatedRoute,
@@ -24,9 +24,6 @@ export class ListsComponent implements OnInit {
   selected_listid: string = "xyz";
   initLoad: boolean;
   ngOnInit(): void {
-    this._auth.intitalLoad.subscribe((val) => {
-      this.initLoad = val;
-    });
     this._api.getlists().subscribe((result: IList[]) => {
       this.lists = result;
       if (this.initLoad && this.lists.length > 0) {
@@ -40,6 +37,9 @@ export class ListsComponent implements OnInit {
         this.tasks = tasks;
       });
     });
+  }
+  ngAfterViewInit(){
+     
   }
   deleteSingleList() {
     this._api.deleteSingleList(this.selected_listid).subscribe((response) => {

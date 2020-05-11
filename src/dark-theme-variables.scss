@@ -1,0 +1,114 @@
+$grey-darker:  hsl(0, 0%, 21%);
+$grey-dark:    hsl(0, 0%, 29%);
+$grey:         hsl(0, 0%, 48%);
+$grey-light:   hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+$grey-lightest: hsl(0, 0%, 93%);
+
+$white-ter:    hsl(0, 0%, 96%);
+$white-bis:    hsl(0, 0%, 98%);
+$white:        hsl(0, 0%, 100%);
+
+// $yellow:       hsl(48,  100%, 67%);
+$green:        hsl(141, 53%,  53%);
+$cyan:         hsl(204, 71%,  53%);
+$blue:         hsl(217, 71%,  53%);
+$purple:       hsl(271, 100%, 71%);
+$red:          hsl(348, 86%, 61%);
+$turquoise: #ecb975;
+$orange: #dd8944;
+$orange-light : #ffc494;
+$light-green: #45f69e; 
+$dark-green: rgb(0, 100, 80);
+// Custom 
+
+$black : hsl(0, 0%, 4%);
+$grey-dark-deepest : hsla(0, 0%, 5%, 1);
+$grey-dark-deeper : hsla(0, 0%, 15%, 1);
+$grey-dark-deep : hsla(0, 0%, 20%, 1);
+$white : hsl(0 , 0%, 100%);
+
+$primary: $orange;
+
+body[data-theme="light"]{
+     .sidebar{
+          background-color: $grey-lightest;
+     }
+     .task-manager-container{
+          background-color: $white;
+     }
+     .task{
+          background-color: $grey-lighter;
+          &:not(.completed){
+               &:hover{
+                    box-shadow: 0px 0px 4px 2px rgb(207, 207, 207);
+               }
+          }
+     }
+}
+
+body[data-theme="dark"]{
+     .task-manager-container{
+          background-color: $black;
+     }
+     .sidebar{
+          background-color: $grey-dark-deep;
+     }
+     .dropdown{
+          // background-color: #ecb975;
+          .dropdown-trigger{
+               // background-color: #202020;
+               .button{
+                    background-color: hsla(0, 0%, 5%, 1);
+                    border: none;
+               }
+          }
+          .dropdown-menu{
+               .dropdown-content{
+                    background-color: rgb(29, 29, 29);
+                    .dropdown-item{
+                         background-color: rgb(29, 29, 29);
+                         &:hover{
+                              background-color: rgb(20, 20, 20);
+                              color : $primary;
+                         }
+                    }
+                    .dropdown-divider{ background-color: rgb(66, 66, 66);}
+               }
+          }
+     }
+     .task{
+          background-color: $grey-dark-deeper;
+          &:not(.completed){
+               &:hover{
+                    box-shadow: 0px 0px 4px 2px rgb(29, 29, 29);
+               }
+          }
+     }
+     .modal-box {
+          background-color: #000000;
+          .control{
+               .input{
+                    background-color: rgb(20, 20, 20) !important;
+                    &:hover{
+                         border: 2px solid transparent;
+                    }
+               }
+          }
+     }
+     .custom-buttons .edit{
+          background-color: rgb(29, 29, 29);
+          border: none;
+     }
+     .settings{
+          background-color: #000000;
+          button {
+               background-color: rgb(39, 39, 39);
+               border: none;
+          }
+          .list{
+               background-color: hsl(0, 0%, 10%);
+               color : #a0a0a0;
+          }
+     }
+}
