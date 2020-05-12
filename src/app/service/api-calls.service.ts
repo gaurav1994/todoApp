@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject } from 'rxjs';
 import { IList } from '../models/list';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { IList } from '../models/list';
 })
 export class ApiCallsService {
 
+  listAnimate = new BehaviorSubject<boolean>(false);
   readonly baseurl = "http://localhost:3000/";
   constructor( private _http : HttpClient) { }
   getlists() : Observable<IList[]>{

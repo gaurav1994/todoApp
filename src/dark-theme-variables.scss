@@ -90,9 +90,19 @@ body[data-theme="dark"]{
           .control{
                .input{
                     background-color: rgb(20, 20, 20) !important;
-                    &:hover{
-                         border: 2px solid transparent;
+                    color: hsl(0, 0%, 55%) !important;
+                    border: none;
+                    &::placeholder{
+                    color: hsl(0, 0%, 55%) !important;
                     }
+                    &:hover{
+                         border: none;
+                    }
+               }
+          }
+          .buttons{
+               .is-danger{
+                    background-color:  rgb(29, 29, 29);
                }
           }
      }
@@ -119,7 +129,7 @@ body[data-theme="dark"]{
           }
           .list{
                background-color: hsl(0, 0%, 10%);
-               color : #a0a0a0;
+               color : #c0c0c0;
           }
-     }
+     } 
 }

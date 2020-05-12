@@ -5,6 +5,7 @@ import { ApiCallsService } from "src/app/service/api-calls.service";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { ITask } from "src/app/models/task";
 import { AuthService } from "src/app/service/auth.service";
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: "app-lists",
@@ -19,11 +20,13 @@ export class ListsComponent implements OnInit, AfterViewInit {
     private _auth: AuthService,
     private _toastr : ToastrService
   ) {}
-  settings : boolean = false;
+  listAnimate : boolean;
+  settings :  boolean = false;
   lists: IList[];
   tasks: ITask[];
   selected_listid: string = "xyz";
   initLoad: boolean;
+  animate : boolean = false;
   ngOnInit(): void {
     this._api.getlists().subscribe((result: IList[]) => {
       this.lists = result;
@@ -37,7 +40,13 @@ export class ListsComponent implements OnInit, AfterViewInit {
       this._api.getTask(this.selected_listid).subscribe((tasks: ITask[]) => {
         this.tasks = tasks;
       });
-    });
+    })
+    this._api.listAnimate.subscribe( (value : boolean )=>{
+         this.listAnimate = value
+    })
+    setTimeout(()=>{
+          this._api.listAnimate.next(false)
+    },2000)
   }
   ngAfterViewInit(){
      

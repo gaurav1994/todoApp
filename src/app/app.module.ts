@@ -19,6 +19,7 @@ import { InterceptService } from './service/intercept.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { DarkSwitchDirective } from './directives/dark-switch.directive';
+import { AnimateDirective } from './directives/animate.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DarkSwitchDirective } from './directives/dark-switch.directive';
     EdittaskComponent,
     SignupComponent,
     LoginComponent,
-    DarkSwitchDirective
+    DarkSwitchDirective,
+    AnimateDirective
   ],
   imports: [
     BrowserModule,

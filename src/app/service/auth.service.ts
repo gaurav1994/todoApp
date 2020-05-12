@@ -1,3 +1,4 @@
+import { ApiCallsService } from 'src/app/service/api-calls.service';
 import { ToastrService } from 'ngx-toastr';
 import { IResponsePayload } from './../models/responsePayload';
 import { Injectable } from '@angular/core';
@@ -11,7 +12,7 @@ import { map, catchError } from 'rxjs/operators';
 export class AuthService {
 
      readonly baseurl = "http://localhost:3000/";
-     constructor(private _http : HttpClient, private _toastr : ToastrService) { }
+     constructor(private _http : HttpClient, private _api : ApiCallsService , private _toastr : ToastrService) { }
      intitalLoad = new BehaviorSubject(true);
 
      userSignup(payload){
@@ -34,6 +35,7 @@ export class AuthService {
                          // }
                          this.setLocalStorage(token)
                          console.log("login successfully ")
+                         this._api.listAnimate.next(true)
                     }
                }),
                catchError(this.errorEmit)
